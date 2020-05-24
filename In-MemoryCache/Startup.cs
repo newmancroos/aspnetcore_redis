@@ -1,11 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StackExchange.Redis;
+using Microsoft.Extensions.Caching;
 
-namespace Redis_Demo
+namespace In_MemoryCache
 {
     public class Startup
     {
@@ -17,12 +22,10 @@ namespace Redis_Demo
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // You should have edis running locally best way is using Redis container. Refer ReadMe document of this Repository
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddControllers();
-            var redis = ConnectionMultiplexer.Connect("localhost");
-            services.AddScoped<IDatabase>(s => redis.GetDatabase());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +45,5 @@ namespace Redis_Demo
                 endpoints.MapControllers();
             });
         }
-
-        
     }
 }
