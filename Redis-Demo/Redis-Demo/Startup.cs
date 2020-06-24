@@ -18,11 +18,14 @@ namespace Redis_Demo
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // You should have edis running locally best way is using Redis container. Refer ReadMe document of this Repository
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             var redis = ConnectionMultiplexer.Connect("localhost");
-            services.AddScoped<IDatabase>(s => redis.GetDatabase());
+            services.AddSingleton<IDatabase>(s => redis.GetDatabase()); //Here singleton should be more suitable
+            services.AddScoped<ICacheStringService, RedisCachStringService>();
+            services.AddSingleton<ICacheService, CacheService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
