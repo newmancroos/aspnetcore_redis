@@ -98,6 +98,17 @@ We can inject IDatabase and use <b>database.StringGet(key></b> and <b>database.S
     Install Nueget packge "Microsoft.Extensions.Caching.Memory" and "Microsost.Extensions.Caching.Abstractions" <br>
 </p>
 <p>
+    Redis as another two very importent facilities
+        <ol>
+            <li>
+                <b>Subscriber</b> - When we create a subscriber that will execute a method when ever it receive a message to the cache chennel.
+            </li>
+            <li>
+                <b>Replica</b> - We can create a Redis cache replica database so that when ever we change the cache a replica copy will be created in the replica database
+            </li>
+        </ol>
+</p>
+<p>
     Read more on In-Memory cache before useing it.<br>
     <a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory?view=aspnetcore-3.1">In-Memory Cache</a>
 </p>
