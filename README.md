@@ -112,3 +112,35 @@ We can inject IDatabase and use <b>database.StringGet(key></b> and <b>database.S
     Read more on In-Memory cache before useing it.<br>
     <a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory?view=aspnetcore-3.1">In-Memory Cache</a>
 </p>
+
+
+<p>
+	<h3>Download and install Ubuntu redis </h3><br />
+	<ol>
+		<li>
+			Open Microsoft store and search for Ubuntu and install Ubuntu 18.04 UTS
+		</li>
+		<li>
+			Command prompt will open, enter New Username and Password. this is one time process
+		</li>
+		<li>
+			Goto redis.io/download, where you can find redis installation commands<br>
+			From the Official Ubunto PPA <br>
+			
+			 * $ sudo add-apt-repository ppa:redislabs/redis <br>
+			 * $ sudo apt-get update <br>
+			 * $ sudo apt-get install redis <br>
+		</li>
+		<li>
+				 - Check redis server is running   - sudo service --status-all     - you will see redis-server not started <br>
+				 - sudo service redis-server start
+		</li>
+		<li>
+			Then we can start redis-cli and add and read cache element to the redis cache. <br>
+			- redis-cli <br>
+			- set key Value <br>
+			- get key
+		</li>
+	</ol>
+	
+</p>
